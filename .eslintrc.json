@@ -29,5 +29,9 @@
     "no-var": "error",
 
     "complexity": [ 1, 5 ]
+  },
+  "globals": {
+    "expect": true,
+    "assert": true
   }
 }
