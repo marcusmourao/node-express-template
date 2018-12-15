@@ -1,18 +1,17 @@
 const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 
-const indexRouter = require('./routes/routes');
+const routes = require('./routes/routes');
+const corsMiddleware = require('./middlewares/cors');
 
 const app = express();
-
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(corsMiddleware);
+app.use('/', routes);
 
-app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
